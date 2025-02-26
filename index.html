@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AE-Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AE-Calculator</h1>
+            <p class="slogan">Calculez vos revenus dans Atlas Earth en temps réel !</p>
+        </header>
+
+        <!-- Navigation par onglets -->
+        <div class="tabs">
+            <button class="tab-button active" onclick="openTab('income')">Revenus Actuels</button>
+            <button class="tab-button" onclick="openTab('forecast')">Prévisions</button>
+        </div>
+
+        <!-- Contenu des onglets -->
+        <div id="income" class="tab-content active">
+            <div class="income-form">
+                <div class="parcel-group">
+                    <label class="common">Terrain Commun :</label>
+                    <div class="input-group">
+                        <button type="button" onclick="adjustParcels('common', -1)">-1</button>
+                        <input type="number" id="commonParcels" min="0" value="0" oninput="calculateIncomeAuto()">
+                        <button type="button" onclick="adjustParcels('common', 1)">+1</button>
+                    </div>
+                </div>
+
+                <div class="parcel-group">
+                    <label class="rare">Terrain Rare :</label>
+                    <div class="input-group">
+                        <button type="button" onclick="adjustParcels('rare', -1)">-1</button>
+                        <input type="number" id="rareParcels" min="0" value="0" oninput="calculateIncomeAuto()">
+                        <button type="button" onclick="adjustParcels('rare', 1)">+1</button>
+                    </div>
+                </div>
+
+                <div class="parcel-group">
+                    <label class="epic">Terrain Épique :</label>
+                    <div class="input-group">
+                        <button type="button" onclick="adjustParcels('epic', -1)">-1</button>
+                        <input type="number" id="epicParcels" min="0" value="0" oninput="calculateIncomeAuto()">
+                        <button type="button" onclick="adjustParcels('epic', 1)">+1</button>
+                    </div>
+                </div>
+
+                <div class="parcel-group">
+                    <label class="legendary">Terrain Légendaire :</label>
+                    <div class="input-group">
+                        <button type="button" onclick="adjustParcels('legendary', -1)">-1</button>
+                        <input type="number" id="legendaryParcels" min="0" value="0" oninput="calculateIncomeAuto()">
+                        <button type="button" onclick="adjustParcels('legendary', 1)">+1</button>
+                    </div>
+                </div>
+
+                <div class="parcel-group badge-group">
+                    <label style="color: #2ecc71;">Nombre de Badges :</label>
+                    <div class="input-group">
+                        <button type="button" onclick="adjustBadges(-1)">-1</button>
+                        <input type="number" id="badges" min="0" value="0" oninput="calculateIncomeAuto()" class="small-input">
+                        <button type="button" onclick="adjustBadges(1)">+1</button>
+                    </div>
+                </div>
+
+                <label>Boost Journalier :</label>
+                <div class="input-group">
+                    <select id="dailyBoost" onchange="calculateIncomeAuto()">
+                        <option value="inactive">Inactif</option>
+                        <option value="active">Actif</option>
+                        <option value="superRent">Super Rent</option>
+                    </select>
+                </div>
+            </div>
+            <div id="results" class="results"></div>
+        </div>
+
+        <div id="forecast" class="tab-content">
+            <h2>Prévisions</h2>
+
+            <h3>Temps pour Gagner X €</h3>
+            <div class="forecast-form">
+                <label>Montant à Gagner (€) :</label>
+                <input type="number" id="targetAmount" min="0" step="0.01" value="10" oninput="calculateTime()">
+                <label>Boost Journalier :</label>
+                <div class="input-group">
+                    <select id="forecastDailyBoost" onchange="calculateTime()">
+                        <option value="inactive">Inactif</option>
+                        <option value="active">Actif</option>
+                    </select>
+                </div>
+                <button type="button" onclick="calculateTime()">Calculer</button>
+            </div>
+            <div id="timeResults" class="results"></div><br><br>
+
+            <h3>Terrains Nécessaires</h3>
+            <div class="forecast-form">
+                <label>Revenus Ciblés :</label>
+                <input type="number" id="targetIncome" min="0" step="0.01" value="1" oninput="calculateParcelsNeeded()">
+                <label>Période :</label>
+                <div class="input-group">
+                    <select id="incomePeriod" onchange="calculateParcelsNeeded()">
+                        <option value="hour">Par heure</option>
+                        <option value="day" selected>Par jour</option>
+                        <option value="month">Par mois</option>
+                        <option value="year">Par an</option>
+                    </select>
+                </div>
+                <label>Boost Journalier :</label>
+                <div class="input-group">
+                    <select id="parcelsDailyBoost" onchange="calculateParcelsNeeded()">
+                        <option value="inactive">Inactif</option>
+                        <option value="active">Actif</option>
+                        <option value="superRent">Super Rent</option>
+                    </select>
+                </div>
+                <label>Nombre de Badges :</label>
+                <div class="input-group">
+                    <button type="button" onclick="adjustParcelsBadges(-1)">-1</button>
+                    <input type="number" id="parcelsBadges" min="0" value="0" oninput="calculateParcelsNeeded()" class="small-input">
+                    <button type="button" onclick="adjustParcelsBadges(1)">+1</button>
+                </div>
+                <button type="button" onclick="calculateParcelsNeeded()">Calculer</button>
+            </div>
+            <div id="parcelsResults" class="results"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

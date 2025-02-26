@@ -1,0 +1,243 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1e3a8a; /* Bleu foncé inspiré de ton screen */
+    margin: 0;
+    padding: 0;
+    color: #fff;
+}
+
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(30, 58, 138, 0.9); /* Fond semi-transparent bleu */
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+header {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #2ecc71; /* Ligne verte */
+}
+
+header h1 {
+    color: #2ecc71; /* Vert */
+    font-size: 2.5em;
+    margin: 0;
+    text-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+}
+
+header .slogan {
+    color: #fff;
+    font-size: 1.2em;
+    opacity: 0.8;
+}
+
+.tabs {
+    overflow: hidden;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #2ecc71;
+}
+
+.tab-button {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 15px 25px;
+    transition: 0.3s;
+    font-size: 1.1em;
+    color: #fff;
+    border-bottom: 2px solid transparent;
+    margin-right: 5px;
+    border-radius: 8px 8px 0 0;
+}
+
+.tab-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-bottom: 2px solid #2ecc71;
+}
+
+.tab-button.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-bottom: 2px solid #2ecc71;
+    color: #2ecc71;
+}
+
+.tab-content {
+    display: none;
+    padding: 20px 0;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Réduit l’écart entre les éléments */
+    margin-bottom: 15px;
+}
+
+input, select {
+    width: 100%;
+    padding: 8px 12px; /* Réduit légèrement la taille */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #2ecc71;
+    box-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+}
+
+select option {
+    color: #000; /* Texte noir pour les options des menus déroulants, pour un meilleur contraste */
+    background-color: #fff; /* Fond blanc pour les options */
+}
+
+.small-input {
+    width: 80px; /* Réduit la largeur du champ « Nombre de Badges » */
+}
+
+button {
+    background-color: #3498db; /* Bleu */
+    color: #fff;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 1em;
+}
+
+button:hover {
+    background-color: #2980b9; /* Bleu plus foncé */
+}
+
+.results {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: rgba(52, 152, 219, 0.3); /* Fond bleu clair semi-transparent */
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1.1em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.income-form, .forecast-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.parcel-group, .badge-group {
+    flex: 1;
+    min-width: 200px;
+    max-width: 100%; /* Ajustement pour mobile */
+}
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 100%;
+        margin: 10px;
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+
+    header .slogan {
+        font-size: 1em;
+    }
+
+    .tabs {
+        margin-bottom: 15px;
+    }
+
+    .tab-button {
+        padding: 12px 20px;
+        font-size: 1em;
+    }
+
+    .income-form, .forecast-form {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .parcel-group, .badge-group {
+        min-width: 100%;
+    }
+
+    .input-group {
+        gap: 5px;
+    }
+
+    input, select, button {
+        padding: 6px 10px;
+        font-size: 0.9em;
+    }
+
+    .small-input {
+        width: 60px; /* Réduit encore plus sur mobile */
+    }
+
+    .results {
+        font-size: 1em;
+        padding: 10px;
+    }
+}
+
+.common { color: #808080; } /* Gris pour Commun */
+.rare { color: #3498db; } /* Bleu pour Rare */
+.epic { color: #9b59b6; } /* Violet pour Épique */
+.legendary { color: #f1c40f; } /* Jaune pour Légendaire */
+
+/* Ajout d'éléments décoratifs inspirés de ton screen */
+.container::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 150px; /* Réduit pour mobile */
+    height: 150px; /* Réduit pour mobile */
+    background: radial-gradient(circle, rgba(46, 204, 113, 0.2), transparent);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.container::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    right: -50px;
+    width: 150px; /* Réduit pour mobile */
+    height: 150px; /* Réduit pour mobile */
+    background: radial-gradient(circle, rgba(52, 152, 219, 0.2), transparent);
+    border-radius: 50%;
+    z-index: 0;
+}
